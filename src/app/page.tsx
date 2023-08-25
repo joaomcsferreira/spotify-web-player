@@ -1,7 +1,9 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="font-black text-2xl">Hello world NextJS!</h1>
-    </main>
+    <div className="p-2 pb-0 pl-1">
+      <div className="h-full grow bg-gradient-to-b from-purple-600 to-ebony rounded-md">
+        Home
+      </div>
+    </div>
   )
 }

@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: "900px",
+        md: "960px",
+      },
+      fontFamily: {
+        sans: ["var(--font-circular)"],
+      },
       colors: {
         springGreen: "#1ed760",
         green: "#159643",
@@ -19,7 +26,15 @@ const config: Config = {
         silver: "#b2b2b2",
         ebony: "#121212",
         crow: "#181818",
-        black: "#000",
+        black: "#050000",
+      },
+
+      gridTemplateColumns: {
+        3070: "auto 1fr",
+      },
+
+      gridTemplateRows: {
+        9010: "88vh 12vh",
       },
     },
   },
