@@ -24,6 +24,7 @@ const config: Config = {
         darkSlateBlue: "#4022a8",
         darkSlateBlueHover: "#3b0aee",
         silver: "#b2b2b2",
+        nero: "#242424",
         ebony: "#121212",
         crow: "#181818",
         black: "#050000",

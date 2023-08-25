@@ -1,12 +1,10 @@
-import Sidemenu from "@/components/Sidemenu"
 import "./globals.css"
 import type { Metadata } from "next"
 
-import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import Player from "@/components/Player"
+import Sidemenu from "@/components/Sidemenu"
 
-const inter = Inter({ subsets: ["latin"] })
 const circular = localFont({
   src: [
     { path: "../../public/fonts/circular-light.otf", weight: "300" },
