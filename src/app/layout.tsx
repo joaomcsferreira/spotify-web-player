@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${circular.variable} font-sans`}>
-      <body className="grid h-screen grid-cols-3070 grid-rows-9010 relative">
+      <body className="grid font-light h-screen grid-cols-3070 grid-rows-9010 relative">
         <Sidemenu />
         {children}
         <Player />
