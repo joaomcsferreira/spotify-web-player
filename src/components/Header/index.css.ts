@@ -1,5 +1,5 @@
 const styles = {
-  container: "h-16 p-4 flex justify-between items-center",
+  container: "h-16 flex justify-between items-center",
   nav: "flex gap-2 items-center",
   navItem: "p-2 bg-black/60 rounded-full cursor-pointer",
   search: "p-3 h-12 min-w-[25rem] flex items-center gap-3 bg-nero rounded-full",

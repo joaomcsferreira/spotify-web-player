@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        xs: "700px",
         sm: "900px",
         md: "960px",
       },
@@ -28,6 +29,7 @@ const config: Config = {
         ebony: "#121212",
         crow: "#181818",
         black: "#050000",
+        "white-glass": "hsla(0,0%,100%,.1)",
       },
 
       gridTemplateColumns: {
