@@ -1,7 +1,6 @@
-import Header from "@/components/Header"
 import Title from "@/components/Title"
 import styles from "./index.css"
-import Footer from "@/components/Footer"
+import MainContent from "@/components/MainContent"
 
 const myPlaylists = [
   {
@@ -35,6 +34,7 @@ const myPlaylists = [
     image: "#00c9b7",
   },
 ]
+
 const randomPlaylists = [
   "Random Playlist 1",
   "Random Playlist 2",
@@ -48,54 +48,51 @@ const randomPlaylists = [
 
 export default function Home() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <Header />
+    <MainContent
+      background="bg-[linear-gradient(180deg,_#25267a_5%,_#121212_100%)]"
+      className="h-full w-full overflow-y-scroll flex flex-col gap-10"
+    >
+      <div className={styles.section}>
+        <Title size="medium">Good morning</Title>
+        <div className={styles.userPlaylists}>
+          {myPlaylists.map((playlist) => (
+            <div key={playlist.name} className={styles.playlist}>
+              <div
+                className={styles.playlistCover}
+                style={{ backgroundColor: playlist.image }}
+              ></div>
 
-        <div className={styles.section}>
-          <Title size="medium">Good morning</Title>
-          <div className={styles.userPlaylists}>
+              <h2 className={styles.playlistName}>{playlist.name}</h2>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {randomPlaylists.map((randomPlaylist) => (
+        <div key={randomPlaylist} className={styles.section}>
+          <Title>{randomPlaylist}</Title>
+
+          <div className={styles.recommendedPlaylist}>
             {myPlaylists.map((playlist) => (
-              <div key={playlist.name} className={styles.playlist}>
+              <div
+                key={playlist.name}
+                className={styles.recommendedPlaylistItem}
+              >
                 <div
-                  className={styles.playlistCover}
+                  className={styles.recommendedPlaylistItemCover}
                   style={{ backgroundColor: playlist.image }}
                 ></div>
-
-                <h2 className={styles.playlistName}>{playlist.name}</h2>
+                <h5 className={styles.recommendedPlaylistItemName}>
+                  {playlist.name}
+                </h5>
+                <p className={styles.recommendedPlaylistItemDescription}>
+                  {playlist.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
-
-        {randomPlaylists.map((randomPlaylist) => (
-          <div key={randomPlaylist} className={styles.section}>
-            <Title>{randomPlaylist}</Title>
-
-            <div className={styles.recommendedPlaylist}>
-              {myPlaylists.map((playlist) => (
-                <div
-                  key={playlist.name}
-                  className={styles.recommendedPlaylistItem}
-                >
-                  <div
-                    className={styles.recommendedPlaylistItemCover}
-                    style={{ backgroundColor: playlist.image }}
-                  ></div>
-                  <h5 className={styles.recommendedPlaylistItemName}>
-                    {playlist.name}
-                  </h5>
-                  <p className={styles.recommendedPlaylistItemDescription}>
-                    {playlist.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        <Footer />
-      </div>
-    </div>
+      ))}
+    </MainContent>
   )
 }

@@ -1,7 +1,4 @@
 const styles = {
-  wrapper: "p-2 pb-0 pl-1 min-w-[75vw]",
-  container:
-    "px-4 py-2 h-full w-full overflow-y-scroll grow flex flex-col gap-10 bg-[linear-gradient(180deg,_#25267a_5%,_#121212_100%)] rounded-md",
   section: "flex flex-col gap-3",
   userPlaylists:
     "grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 flex-wrap",
