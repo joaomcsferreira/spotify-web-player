@@ -20,11 +20,19 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.nav}>
         <div className={styles.navItem}>
-          <Image src={backIcon} alt={`${backIcon} icon`} />
+          <Image
+            src={backIcon}
+            alt={`${backIcon} icon`}
+            className={styles.navItemIcon}
+          />
         </div>
 
         <div className={styles.navItem}>
-          <Image src={nextIcon} alt={`${nextIcon} icon`} />
+          <Image
+            src={nextIcon}
+            alt={`${nextIcon} icon`}
+            className={styles.navItemIcon}
+          />
         </div>
 
         {pathname === "/search" && (
