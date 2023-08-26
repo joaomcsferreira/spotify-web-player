@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 
 const page = () => {
@@ -6,6 +7,7 @@ const page = () => {
       <div className="h-full bg-ebony rounded-md">
         <Header />
         Search
+        <Footer />
       </div>
     </div>
   )

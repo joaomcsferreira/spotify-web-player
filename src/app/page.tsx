@@ -1,6 +1,7 @@
 import Header from "@/components/Header"
 import Title from "@/components/Title"
 import styles from "./index.css"
+import Footer from "@/components/Footer"
 
 const myPlaylists = [
   {
@@ -50,6 +51,7 @@ export default function Home() {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <Header />
+
         <div className={styles.section}>
           <Title size="medium">Good morning</Title>
           <div className={styles.userPlaylists}>
@@ -91,6 +93,8 @@ export default function Home() {
             </div>
           </div>
         ))}
+
+        <Footer />
       </div>
     </div>
   )
