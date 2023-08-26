@@ -19,7 +19,7 @@ const MainContent = ({ children, background, className }: MainContentProps) => {
       >
         <Header />
         <div className={styles.content}>
-          <div className={className}>
+          <div className={`${styles.scroll} ${className}`}>
             {children}
 
             <Footer />

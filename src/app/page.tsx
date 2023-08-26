@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <MainContent
       background="bg-[linear-gradient(180deg,_#25267a_5%,_#121212_100%)]"
-      className="h-full w-full overflow-y-scroll flex flex-col gap-10"
+      className="flex flex-col gap-10"
     >
       <div className={styles.section}>
         <Title size="medium">Good morning</Title>
