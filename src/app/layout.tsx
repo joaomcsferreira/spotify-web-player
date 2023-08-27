@@ -5,6 +5,8 @@ import localFont from "next/font/local"
 import Player from "@/components/Player"
 import Sidemenu from "@/components/Sidemenu"
 
+import { UserProvider } from "@/context/UserProvider"
+
 const circular = localFont({
   src: [
     { path: "../../public/fonts/circular-light.otf", weight: "300" },
@@ -29,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${circular.variable} font-sans`}>
       <body className="grid font-light h-screen grid-cols-3070 grid-rows-9010 relative">
-        <Sidemenu />
-        {children}
-        <Player />
+        <UserProvider>
+          <Sidemenu />
+          {children}
+          <Player />
+        </UserProvider>
       </body>
     </html>
   )
