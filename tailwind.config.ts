@@ -39,6 +39,10 @@ const config: Config = {
       gridTemplateRows: {
         9010: "88vh 12vh",
       },
+
+      backgroundImage: {
+        "now-playing-ad": "linear-gradient(90deg,#af2896,#509bf5)",
+      },
     },
   },
   plugins: [],

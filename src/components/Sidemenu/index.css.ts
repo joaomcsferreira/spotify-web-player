@@ -28,6 +28,10 @@ const styles = {
   libraryItemTitle: "text-sm md:text-md",
   libraryItemDescription:
     "font-light whitespace-nowrap overflow-hidden text-ellipsis text-xs brightness-75 md:text-sm",
+  librarySuggestion: "flex flex-col gap-6 p-2",
+  librarySuggestionItem: "bg-nero p-5 rounded-md flex flex-col gap-3.5",
+  librarySuggestionTitle: "font-bold",
+  librarySuggestionDescription: "text-sm font-medium",
 }
 
 export default styles

@@ -1,7 +1,7 @@
 const styles = {
   container: "h-16 flex justify-between items-center",
   nav: "flex gap-2 items-center",
-  navItem: "p-2 bg-black/60 rounded-full cursor-pointer",
+  navItem: "p-2 bg-black/60 rounded-full cursor-not-allowed",
   navItemIcon: "w-4 h-4",
   search:
     "p-3 h-12 min-w-[20rem] cursor-text flex items-center gap-3 bg-nero rounded-full hover:border-zinc-600 border-transparent border-2 hover:bg-zinc-800 focus-within:border-2 focus-within:border-white",

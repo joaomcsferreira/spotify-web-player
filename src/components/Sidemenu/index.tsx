@@ -15,6 +15,10 @@ import plusIcon from "../../../public/svg/plus.svg"
 import arrowRightIcon from "../../../public/svg/arrow-right.svg"
 import arrowDownIcon from "../../../public/svg/inverted-triangle.svg"
 
+import { useUserContext } from "@/context/UserProvider/context"
+
+import Button from "../Button"
+
 import styles from "./index.css"
 
 const items = [
@@ -64,8 +68,10 @@ const Sidemenu = () => {
   const [active, setActive] = React.useState("home")
   const [expand, setExpand] = React.useState(true)
 
+  const { isLogged } = useUserContext()
+
   const handleClick = () => {
-    setExpand((expand) => !expand)
+    if (isLogged) setExpand((expand) => !expand)
   }
 
   return (
@@ -88,7 +94,7 @@ const Sidemenu = () => {
                 <p
                   className={`${styles.navItemName} ${
                     active === item.name ? "text-white" : "text-silver"
-                  } ${!expand && "!hidden"}`}
+                  } ${!expand && "!hidden"} ${!isLogged && "!block"}`}
                 >
                   {item.name}
                 </p>
@@ -104,70 +110,105 @@ const Sidemenu = () => {
                 src={expand ? libraryIcon : libraryFullIcon}
                 alt={`library icon`}
               />
-              <p className={`${!expand && "!hidden"} hidden sm:block`}>
+              <p
+                className={`${!expand && "!hidden"} ${
+                  isLogged && "hidden sm:block"
+                }`}
+              >
                 Your Library
               </p>
             </div>
 
-            <div className={`${styles.libraryAction} ${!expand && "!hidden"}`}>
-              <div className={styles.libraryActionItem}>
-                <Image
-                  className={styles.libraryActionItemIcon}
-                  src={plusIcon}
-                  alt="create playlist or folder icon"
-                />
-              </div>
-
-              <div className={styles.libraryActionItem}>
-                <Image
-                  className={styles.libraryActionItemIcon}
-                  src={arrowRightIcon}
-                  alt="show more icon"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className={`${styles.libraryTypes} ${!expand && "!hidden"}`}>
-            <p className={styles.libraryTypesItem}>Playlists</p>
-            <p className={styles.libraryTypesItem}>Artists</p>
-            <p className={styles.libraryTypesItem}>Albums</p>
-            <p className={styles.libraryTypesItem}>Podcasts & shows</p>
-          </div>
-
-          <div className={`${styles.libraryFilter} ${!expand && "!hidden"}`}>
-            <div className={`${styles.libraryActionItem} w-[2.15rem]`}>
-              <Image src={searchIcon} alt="search in your library icon" />
-            </div>
-            <div className={styles.libraryFilterSortBy}>
-              <p>Recents</p>
-              <Image src={arrowDownIcon} alt="show filters icon" />
-            </div>
-          </div>
-
-          <div className={`${styles.libraryItems} ${!expand && "!p-0"}`}>
-            {libraryItems.map((item) => (
+            {isLogged && (
               <div
-                key={item.name}
-                className={`${styles.libraryItem} ${!expand && "!w-fit"}`}
+                className={`${styles.libraryAction} ${!expand && "!hidden"}`}
               >
-                <div
-                  className={styles.libraryItemCover}
-                  style={{ backgroundColor: item.image }}
-                ></div>
-                <div
-                  className={`${styles.libraryItemInfo} ${
-                    !expand && "!hidden"
-                  }`}
-                >
-                  <h4 className={styles.libraryItemTitle}>{item.name}</h4>
-                  <p className={styles.libraryItemDescription}>
-                    {item.description}
-                  </p>
+                <div className={styles.libraryActionItem}>
+                  <Image
+                    className={styles.libraryActionItemIcon}
+                    src={plusIcon}
+                    alt="create playlist or folder icon"
+                  />
+                </div>
+
+                <div className={styles.libraryActionItem}>
+                  <Image
+                    className={styles.libraryActionItemIcon}
+                    src={arrowRightIcon}
+                    alt="show more icon"
+                  />
                 </div>
               </div>
-            ))}
+            )}
           </div>
+
+          {isLogged ? (
+            <>
+              <div className={`${styles.libraryTypes} ${!expand && "!hidden"}`}>
+                <p className={styles.libraryTypesItem}>Playlists</p>
+                <p className={styles.libraryTypesItem}>Artists</p>
+                <p className={styles.libraryTypesItem}>Albums</p>
+                <p className={styles.libraryTypesItem}>Podcasts & shows</p>
+              </div>
+
+              <div
+                className={`${styles.libraryFilter} ${!expand && "!hidden"}`}
+              >
+                <div className={`${styles.libraryActionItem} w-[2.15rem]`}>
+                  <Image src={searchIcon} alt="search in your library icon" />
+                </div>
+                <div className={styles.libraryFilterSortBy}>
+                  <p>Recents</p>
+                  <Image src={arrowDownIcon} alt="show filters icon" />
+                </div>
+              </div>
+
+              <div className={`${styles.libraryItems} ${!expand && "!p-0"}`}>
+                {libraryItems.map((item) => (
+                  <div
+                    key={item.name}
+                    className={`${styles.libraryItem} ${!expand && "!w-fit"}`}
+                  >
+                    <div
+                      className={styles.libraryItemCover}
+                      style={{ backgroundColor: item.image }}
+                    ></div>
+                    <div
+                      className={`${styles.libraryItemInfo} ${
+                        !expand && "!hidden"
+                      }`}
+                    >
+                      <h4 className={styles.libraryItemTitle}>{item.name}</h4>
+                      <p className={styles.libraryItemDescription}>
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className={styles.librarySuggestion}>
+              <div className={styles.librarySuggestionItem}>
+                <h5 className={styles.librarySuggestionTitle}>
+                  Create your first playlist
+                </h5>
+                <p className={styles.librarySuggestionDescription}>
+                  it&apos;s easy, we&apos;ll help you
+                </p>
+                <Button size="small">Create playlist</Button>
+              </div>
+              <div className={styles.librarySuggestionItem}>
+                <h5 className={styles.librarySuggestionTitle}>
+                  Let&apos;s find some podcasts to follow
+                </h5>
+                <p className={styles.librarySuggestionDescription}>
+                  we&apos;ll keep you updated on new episodes
+                </p>
+                <Button size="small">Browse podcasts</Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,9 @@
+"use client"
+
 import Title from "@/components/Title"
 import styles from "./index.css"
 import MainContent from "@/components/MainContent"
+import { useUserContext } from "@/context/UserProvider/context"
 
 const myPlaylists = [
   {
@@ -47,30 +50,64 @@ const randomPlaylists = [
 ]
 
 export default function Home() {
+  const { isLogged } = useUserContext()
+
   return (
     <MainContent
-      background="bg-[linear-gradient(180deg,_#25267a_5%,_#121212_100%)]"
+      background={
+        isLogged
+          ? "bg-[linear-gradient(180deg,_#25267a_5%,_#121212_100%)]"
+          : "bg-ebony"
+      }
       className="flex flex-col gap-10"
     >
-      <div className={styles.section}>
-        <Title size="medium">Good morning</Title>
-        <div className={styles.userPlaylists}>
-          {myPlaylists.map((playlist) => (
-            <div key={playlist.name} className={styles.playlist}>
-              <div
-                className={styles.playlistCover}
-                style={{ backgroundColor: playlist.image }}
-              ></div>
+      {isLogged ? (
+        <>
+          <div className={styles.section}>
+            <Title size="medium">Good morning</Title>
+            <div className={styles.userPlaylists}>
+              {myPlaylists.map((playlist) => (
+                <div key={playlist.name} className={styles.playlist}>
+                  <div
+                    className={styles.playlistCover}
+                    style={{ backgroundColor: playlist.image }}
+                  ></div>
 
-              <h2 className={styles.playlistName}>{playlist.name}</h2>
+                  <h2 className={styles.playlistName}>{playlist.name}</h2>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {randomPlaylists.map((randomPlaylist) => (
+            <div key={randomPlaylist} className={styles.section}>
+              <Title>{randomPlaylist}</Title>
+
+              <div className={styles.recommendedPlaylist}>
+                {myPlaylists.map((playlist) => (
+                  <div
+                    key={playlist.name}
+                    className={styles.recommendedPlaylistItem}
+                  >
+                    <div
+                      className={styles.recommendedPlaylistItemCover}
+                      style={{ backgroundColor: playlist.image }}
+                    ></div>
+                    <h5 className={styles.recommendedPlaylistItemName}>
+                      {playlist.name}
+                    </h5>
+                    <p className={styles.recommendedPlaylistItemDescription}>
+                      {playlist.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {randomPlaylists.map((randomPlaylist) => (
-        <div key={randomPlaylist} className={styles.section}>
-          <Title>{randomPlaylist}</Title>
+        </>
+      ) : (
+        <div className={styles.section}>
+          <Title>Spotify playlists</Title>
 
           <div className={styles.recommendedPlaylist}>
             {myPlaylists.map((playlist) => (
@@ -92,7 +129,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      ))}
+      )}
     </MainContent>
   )
 }

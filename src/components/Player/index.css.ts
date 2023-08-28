@@ -1,5 +1,5 @@
 const styles = {
-  container: "bg-black col-span-2 px-6 flex items-center relative",
+  container: "bg-black col-span-2 flex items-center relative",
   currentMusic: "flex gap-5 absolute left-5",
   currentMusicImage: "w-14 h-14 bg-teal-600 rounded-md",
   currentMusicInfo: "hidden flex-col justify-center md:flex",
@@ -17,6 +17,11 @@ const styles = {
   playerProgressBar: "min-w-[30vw] h-1 bg-silver rounded-full",
   multimedia: "absolute right-5 flex gap-2 md:gap-4",
   multimediaItem: "brightness-50 hover:brightness-100 cursor-pointer",
+  musicBarAdWrapper: "p-2 w-full h-full",
+  musicBarAd: "bg-now-playing-ad w-full h-full flex justify-between p-3",
+  musicBarAdInfo: "flex flex-col justify-around",
+  musicBarAdTitle: "text-xs",
+  musicBarAdDescription: "font-medium text-xs sm:text-sm md:text-base",
 }
 
 export default styles
