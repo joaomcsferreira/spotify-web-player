@@ -6,4 +6,5 @@ export interface UserContextValue {
   isLogged: boolean
   user: null | string
   login: (username: string) => void
+  logout: () => void
 }

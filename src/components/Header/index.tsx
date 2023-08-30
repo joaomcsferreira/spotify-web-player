@@ -18,7 +18,7 @@ import styles from "./index.css"
 const Header = () => {
   const pathname = usePathname()
 
-  const { isLogged, login } = useUserContext()
+  const { isLogged, login, logout } = useUserContext()
 
   const [input, setInput] = React.useState("")
 
@@ -62,7 +62,7 @@ const Header = () => {
       </div>
 
       {isLogged ? (
-        <div className={styles.profile}>
+        <div onClick={() => logout()} className={styles.profile}>
           <div className={styles.avatar}>
             <Image
               src={"/images/profile-avatar.jpg"}

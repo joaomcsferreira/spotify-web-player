@@ -15,8 +15,13 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     setUsername(username)
   }
 
+  const logout = () => {
+    setIsLogged(false)
+    setUsername(null)
+  }
+
   return (
-    <UserContext.Provider value={{ isLogged, user, login }}>
+    <UserContext.Provider value={{ isLogged, user, login, logout }}>
       {children}
     </UserContext.Provider>
   )
