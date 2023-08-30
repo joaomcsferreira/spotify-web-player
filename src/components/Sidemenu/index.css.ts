@@ -24,8 +24,8 @@ const styles = {
   libraryItems: "h-full overflow-y-scroll sm:p-2.5",
   libraryItem: "p-2 m-auto flex rounded-md hover:bg-white/5 cursor-pointer",
   libraryItemCover: "w-12 h-12 rounded-md bg-slate-500",
-  libraryItemInfo: "hidden sm:flex flex-col pl-2 pt-2 justify-between",
-  libraryItemTitle: "text-sm md:text-md",
+  libraryItemInfo: "hidden sm:flex flex-col pl-2 pt-2 w-full justify-between",
+  libraryItemTitle: "text-sm md:text-md truncate w-[85%]",
   libraryItemDescription:
     "font-light whitespace-nowrap overflow-hidden text-ellipsis text-xs brightness-75 md:text-sm",
   librarySuggestion: "flex flex-col gap-6 p-2",

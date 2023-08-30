@@ -1,53 +1,18 @@
 "use client"
 
+import Image from "next/image"
+
 import Title from "@/components/Title"
-import styles from "./index.css"
 import MainContent from "@/components/MainContent"
+
 import { useUserContext } from "@/context/UserProvider/context"
+import { ANOTHER_PLAYLISTS, YOUR_PLAYLISTS } from "@/context/data"
 
-const myPlaylists = [
-  {
-    name: "Playlist 1",
-    description: "description by playlist 1",
-    image: "#8642f4",
-  },
-  {
-    name: "Playlist 2",
-    description: "description by playlist 2",
-    image: "#1574f3",
-  },
-  {
-    name: "Playlist 3",
-    description: "description by playlist 3",
-    image: "#0b95e9",
-  },
-  {
-    name: "Playlist 4",
-    description: "description by playlist 4",
-    image: "#0b9ed2",
-  },
-  {
-    name: "Playlist 5",
-    description: "description by playlist 5",
-    image: "#13aebc",
-  },
-  {
-    name: "Playlist 6",
-    description: "description by playlist 6",
-    image: "#00c9b7",
-  },
-]
+import styles from "./index.css"
 
-const randomPlaylists = [
-  "Random Playlist 1",
-  "Random Playlist 2",
-  "Random Playlist 3",
-  "Random Playlist 4",
-  "Random Playlist 5",
-  "Random Playlist 6",
-  "Random Playlist 7",
-  "Random Playlist 8",
-]
+const yourPlaylists = YOUR_PLAYLISTS.slice(0, 6)
+
+const anotherPlaylists = ANOTHER_PLAYLISTS
 
 export default function Home() {
   const { isLogged } = useUserContext()
@@ -66,12 +31,15 @@ export default function Home() {
           <div className={styles.section}>
             <Title size="medium">Good morning</Title>
             <div className={styles.userPlaylists}>
-              {myPlaylists.map((playlist) => (
+              {yourPlaylists.map((playlist) => (
                 <div key={playlist.name} className={styles.playlist}>
-                  <div
+                  <Image
+                    src={`/images/${playlist.cover}`}
+                    alt={`playlist ${playlist.name} cover`}
+                    width={80}
+                    height={80}
                     className={styles.playlistCover}
-                    style={{ backgroundColor: playlist.image }}
-                  ></div>
+                  />
 
                   <h2 className={styles.playlistName}>{playlist.name}</h2>
                 </div>
@@ -79,20 +47,24 @@ export default function Home() {
             </div>
           </div>
 
-          {randomPlaylists.map((randomPlaylist) => (
-            <div key={randomPlaylist} className={styles.section}>
-              <Title>{randomPlaylist}</Title>
+          {anotherPlaylists.map((anotherPlaylist) => (
+            <div key={anotherPlaylist.title} className={styles.section}>
+              <Title>{anotherPlaylist.title}</Title>
 
               <div className={styles.recommendedPlaylist}>
-                {myPlaylists.map((playlist) => (
+                {anotherPlaylist.items.slice(0, 5).map((playlist) => (
                   <div
                     key={playlist.name}
                     className={styles.recommendedPlaylistItem}
                   >
-                    <div
-                      className={styles.recommendedPlaylistItemCover}
-                      style={{ backgroundColor: playlist.image }}
-                    ></div>
+                    <div className={styles.recommendedPlaylistItemCover}>
+                      <Image
+                        src={`/images/${playlist.cover}`}
+                        alt={`playlist ${playlist.name} cover`}
+                        className={styles.recommendedPlylistItemCoverImage}
+                        fill
+                      />
+                    </div>
                     <h5 className={styles.recommendedPlaylistItemName}>
                       {playlist.name}
                     </h5>
@@ -110,7 +82,7 @@ export default function Home() {
           <Title>Spotify playlists</Title>
 
           <div className={styles.recommendedPlaylist}>
-            {myPlaylists.map((playlist) => (
+            {/* {myPlaylists.map((playlist) => (
               <div
                 key={playlist.name}
                 className={styles.recommendedPlaylistItem}
@@ -126,7 +98,7 @@ export default function Home() {
                   {playlist.description}
                 </p>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       )}

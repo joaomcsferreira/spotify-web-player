@@ -1,7 +1,8 @@
 const styles = {
   container: "bg-black col-span-2 flex items-center relative",
   currentMusic: "flex gap-5 absolute left-5",
-  currentMusicImage: "w-14 h-14 bg-teal-600 rounded-md",
+  currentMusicImage: "w-14 h-14 relative bg-teal-600 rounded-md",
+  currentMusicImageItem: "object-contain",
   currentMusicInfo: "hidden flex-col justify-center md:flex",
   currentMusicInfoName:
     "text-sm font-medium capitalize cursor-pointer hover:underline",

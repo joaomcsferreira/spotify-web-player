@@ -14,8 +14,10 @@ import libraryFullIcon from "../../../public/svg/library-full.svg"
 import plusIcon from "../../../public/svg/plus.svg"
 import arrowRightIcon from "../../../public/svg/arrow-right.svg"
 import arrowDownIcon from "../../../public/svg/inverted-triangle.svg"
+import pin from "../../../public/svg/pin.svg"
 
 import { useUserContext } from "@/context/UserProvider/context"
+import { YOUR_PLAYLISTS, YOUR_PLAYLISTS_PINNED } from "@/context/data"
 
 import Button from "../Button"
 
@@ -31,38 +33,8 @@ const items = [
   },
 ]
 
-const libraryItems = [
-  {
-    name: "Playlist 1",
-    description: "description by playlist 1",
-    image: "#8642f4",
-  },
-  {
-    name: "Playlist 2",
-    description: "description by playlist 2",
-    image: "#1574f3",
-  },
-  {
-    name: "Playlist 3",
-    description: "description by playlist 3",
-    image: "#0b95e9",
-  },
-  {
-    name: "Playlist 4",
-    description: "description by playlist 4",
-    image: "#0b9ed2",
-  },
-  {
-    name: "Playlist 5",
-    description: "description by playlist 5",
-    image: "#13aebc",
-  },
-  {
-    name: "Playlist 6",
-    description: "description by playlist 6",
-    image: "#00c9b7",
-  },
-]
+const yourPlaylists = YOUR_PLAYLISTS
+const yourPlaylistsPinned = YOUR_PLAYLISTS_PINNED
 
 const Sidemenu = () => {
   const [active, setActive] = React.useState("home")
@@ -164,15 +136,46 @@ const Sidemenu = () => {
               </div>
 
               <div className={`${styles.libraryItems} ${!expand && "!p-0"}`}>
-                {libraryItems.map((item) => (
+                {yourPlaylistsPinned.map((item) => (
                   <div
                     key={item.name}
                     className={`${styles.libraryItem} ${!expand && "!w-fit"}`}
                   >
-                    <div
+                    <Image
+                      src={`/images/${item.cover}`}
+                      alt={`playlist ${item.name} cover`}
+                      width={48}
+                      height={48}
                       className={styles.libraryItemCover}
-                      style={{ backgroundColor: item.image }}
-                    ></div>
+                    />
+                    <div
+                      className={`${styles.libraryItemInfo} ${
+                        !expand && "!hidden"
+                      }`}
+                    >
+                      <h4 className={styles.libraryItemTitle}>{item.name}</h4>
+                      <p
+                        className={`${styles.libraryItemDescription} flex gap-2 items-center`}
+                      >
+                        <Image src={pin} alt="pin icon" className="w-3" />
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {yourPlaylists.map((item) => (
+                  <div
+                    key={item.name}
+                    className={`${styles.libraryItem} ${!expand && "!w-fit"}`}
+                  >
+                    <Image
+                      src={`/images/${item.cover}`}
+                      alt={`playlist ${item.name} cover`}
+                      width={48}
+                      height={48}
+                      className={styles.libraryItemCover}
+                    />
                     <div
                       className={`${styles.libraryItemInfo} ${
                         !expand && "!hidden"

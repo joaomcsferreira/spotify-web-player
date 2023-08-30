@@ -4,19 +4,21 @@ import React from "react"
 
 import Image from "next/image"
 
-import { usePathname } from "next/navigation"
-
 import backIcon from "../../../public/svg/less-than.svg"
 import nextIcon from "../../../public/svg/greater-than.svg"
 import searchIcon from "../../../public/svg/search.svg"
-import styles from "./index.css"
+
+import { usePathname } from "next/navigation"
 import { useUserContext } from "@/context/UserProvider/context"
+
 import Button from "../Button"
+
+import styles from "./index.css"
 
 const Header = () => {
   const pathname = usePathname()
 
-  const { isLogged } = useUserContext()
+  const { isLogged, login } = useUserContext()
 
   const [input, setInput] = React.useState("")
 
@@ -61,10 +63,17 @@ const Header = () => {
 
       {isLogged ? (
         <div className={styles.profile}>
-          <div className={styles.avatar}></div>
+          <div className={styles.avatar}>
+            <Image
+              src={"/images/profile-avatar.jpg"}
+              alt={`profile picture`}
+              className={styles.avatarImage}
+              fill
+            />
+          </div>
         </div>
       ) : (
-        <Button>Log in</Button>
+        <Button onClick={() => login("user")}>Log in</Button>
       )}
     </div>
   )

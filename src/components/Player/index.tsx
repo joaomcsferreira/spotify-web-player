@@ -21,6 +21,9 @@ import { useUserContext } from "@/context/UserProvider/context"
 import Button from "../Button"
 
 import styles from "./index.css"
+import { PLAYING_NOW } from "@/context/data"
+
+const playing_now = PLAYING_NOW
 
 const Player = () => {
   const { isLogged } = useUserContext()
@@ -30,14 +33,21 @@ const Player = () => {
       {isLogged ? (
         <>
           <div className={styles.currentMusic}>
-            <div className={styles.currentMusicImage}></div>
+            <div className={styles.currentMusicImage}>
+              <Image
+                src={`/images/${playing_now.cover}`}
+                alt={`${playing_now.name} music cover`}
+                className={styles.currentMusicImageItem}
+                fill
+              />
+            </div>
 
             <div className={styles.currentMusicInfo}>
               <h5 className={styles.currentMusicInfoName}>
-                current music name
+                {playing_now.name}
               </h5>
               <p className={styles.currentMusicInfoAlbum}>
-                current music album
+                {playing_now.artist}
               </p>
             </div>
 
