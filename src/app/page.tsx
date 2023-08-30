@@ -81,7 +81,33 @@ export default function Home() {
         <div className={styles.section}>
           <Title>Spotify playlists</Title>
 
-          <div className={styles.recommendedPlaylist}>
+          <div className={styles.section}>
+            <Title>{anotherPlaylists[0].title}</Title>
+
+            <div className={styles.recommendedPlaylist}>
+              {anotherPlaylists[0].items.slice(0, 5).map((playlist) => (
+                <div
+                  key={playlist.name}
+                  className={styles.recommendedPlaylistItem}
+                >
+                  <div className={styles.recommendedPlaylistItemCover}>
+                    <Image
+                      src={`/images/${playlist.cover}`}
+                      alt={`playlist ${playlist.name} cover`}
+                      className={styles.recommendedPlylistItemCoverImage}
+                      fill
+                    />
+                  </div>
+                  <h5 className={styles.recommendedPlaylistItemName}>
+                    {playlist.name}
+                  </h5>
+                  <p className={styles.recommendedPlaylistItemDescription}>
+                    {playlist.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
             {/* {myPlaylists.map((playlist) => (
               <div
                 key={playlist.name}
